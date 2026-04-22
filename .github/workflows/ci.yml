@@ -1,0 +1,27 @@
+name: Consumer Tests CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Add GitHub Packages source
+        run: dotnet nuget add source --username Smetik --password ${{ secrets.GH_PACKAGES_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Smetik/index.json"
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Run tests
+        run: dotnet test --no-restore
