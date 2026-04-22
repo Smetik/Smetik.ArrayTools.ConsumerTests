@@ -1,33 +1,25 @@
-# Smetik.ArrayTools
+# Smetik.ArrayTools.ConsumerTests
 
-Библиотека на C# для работы с массивами целых чисел.
+Отдельный проект с unit-тестами для библиотеки **Smetik.ArrayTools**.
 
-## Возможности
+## Назначение
 
-- сортировка массива по возрастанию;
-- фильтрация элементов по условию;
+Проект проверяет работу опубликованного NuGet-пакета как внешнего подключения.
+
+## Что проверяется
+
+- сортировка массива;
+- фильтрация элементов;
 - поиск элемента;
-- получение элемента по индексу.
+- получение элемента по индексу;
+- граничные случаи и исключения.
 
-## Установка
+## Запуск тестов
 
-Добавление источника GitHub Packages:
+    dotnet test
 
-    dotnet nuget add source --username "ВАШ_GITHUB_USERNAME" --password "ВАШ_ТОКЕН" --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Smetik/index.json"
+## Особенности
 
-Установка пакета:
-
-    dotnet add package Smetik.ArrayTools --version 1.0.0 --source github
-
-## Пример использования
-
-    using Smetik.ArrayTools;
-
-    int[] numbers = { 5, 2, 9, 1 };
-    int[] sorted = ArrayTools.SortAscending(numbers);
-
-## Дополнительно
-
-- пакет опубликован в GitHub Packages;
-- настроены CI/CD через GitHub Actions;
-- документация находится в GitHub Wiki.
+- используется xUnit;
+- пакет подключён через GitHub Packages;
+- настроен CI через GitHub Actions.
